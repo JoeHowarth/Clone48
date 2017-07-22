@@ -1,19 +1,23 @@
 
 // actions
 
-export const reducer = (Oldboard = [], dir) => {
-  let rows = arr2row(Oldboard, dir);
+export const reducer = ({board, score}, dir) => {
+  let rows = arr2row(clone(board), dir);
   let numMoves = 0;
   numMoves += moveTiles(rows);
-  numMoves += combineTiles(rows);
+  score += combineTiles(rows);
   numMoves += moveTiles(rows);
   if (numEmpty(rows) === 0) return -1;
   if (numMoves > 0) rows = placeVal(rows);
   // console.log(numMoves);
   // move tiles left into empty spots
-  return row2arr(rows, dir);
+  board = row2arr(rows, dir)
+  return {board: board, score: score};
 }
 
+export const clone = board => board.map((row) => (
+  row.map(tile => Object.assign({}, tile)
+)));
 
 export const moveTiles = rows => {
   return (rows.reduce((numMoves, row) => {
@@ -34,17 +38,17 @@ export const moveTiles = rows => {
   }, 0));
 }
 
-const combineTiles = rows => rows.reduce((numMoves, row) => {
+const combineTiles = rows => rows.reduce((newScore, row) => {
   for (let i=0; i<3; i++) {
     // if non-empty and next cell has same value
     if (row[i].value !==0 && row[i+1].value === row[i].value) {
       row[i].value *= 2;
       row[i+1].value = 0;
-      numMoves += 1;
+      newScore += row[i].value;
       break;
     }
   }
-  return numMoves;
+  return newScore;
 }, 0);
 const numEmpty = board => board.reduce((arr, row) => arr.concat(row)).filter(tile => (
   tile.value === 0

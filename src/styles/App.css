@@ -23,9 +23,13 @@
   /*font-size: 1em;*/
   color: #755;
 }
+
 .subtitle {
+  font-size: 1em;
+}
+.subtitle span {
   color: #F55;
 }
-.subtitle.false {
+.subtitle span.false {
   display:none
 }

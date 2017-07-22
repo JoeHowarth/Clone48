@@ -2,7 +2,7 @@
   "name": "clone48",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://joehowarth.github.io/Clone48/",
+  "homepage": "https://joehowarth.github.io/clone48/",
   "dependencies": {
     "gh-pages": "^1.0.0",
     "react": "^15.6.1",

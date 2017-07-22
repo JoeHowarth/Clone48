@@ -10,11 +10,12 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    const board = this.makeBoard(board);
+    const board = this.makeBoard();
 
     this.state = {
       board: board,
       gameOver: false,
+      score: 0,
     }
     this.handleKey = this.handleKey.bind(this);
     this.reset = this.reset.bind(this);
@@ -51,13 +52,12 @@ class App extends Component {
   }
 
   move(dir) {
-    let newBoard = clone(this.state.board);
-    newBoard = reducer(newBoard, dir);
-    if (newBoard === -1) {
+    const newState = reducer(this.state, dir);
+    if (newState === -1) {
       this.setState({gameOver: true})
       return;
     }
-    this.setState({board: newBoard});
+    this.setState(newState); // update board and score
   }
 
   reset() {
@@ -66,24 +66,29 @@ class App extends Component {
   }
 
   render() {
-    const {gameOver, board} = this.state;
+    const {gameOver, board, score} = this.state;
     return (
       <div  className='App' >
         <Board boardState={board}/>
-        <Title title="Clone 48" subtitle={"Game Over"} visibility={gameOver}/>
+        <Title
+          title="Clone 48"
+          subtitle={"Game Over"}
+          visibility={gameOver}
+          score={score}
+        />
         <Controls reset={this.reset}/>
       </div>
     );
   }
 }
 
-const clone = board => board.map((row) => row.map(tile => Object.assign({}, tile)));
 
-const Title = ({title, subtitle, visibility}) => {
+
+const Title = ({title, subtitle, visibility, score}) => {
   return (
     <div className="title-container">
       <h1 className="Title">{title}</h1>
-      <h2 className={'subtitle ' + visibility}>{subtitle}</h2>
+      <h2 className='subtitle'>Score: {score} <span className={visibility}>   {subtitle}</span></h2>
     </div>
   )
 };
