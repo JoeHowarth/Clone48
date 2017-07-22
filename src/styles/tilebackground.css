@@ -1,0 +1,52 @@
+.v0 {
+  background: #CDC1B4;
+  color: #CDC1B4;
+}
+
+.v2 {
+  background: #EEE4DA;
+  color: #776E65;
+}
+
+.v4 {
+  background: #EDE0C8;
+  color: #776E65;
+}
+
+.v8 {
+  background: #F2B179;
+}
+
+.v16 {
+  background: #F49663;
+}
+
+.v32 {
+  background: #F67C5F;
+}
+
+.v64 {
+  background: #F65E3B;
+}
+
+.v128 {
+  background: #EDCF72;
+}
+
+.v256 {
+  background: #EDCC61;
+}
+
+.v512 {
+  background: #EDC850;
+  box-shadow: 0 0 4px 2px #FFEf65;
+  border: #F2D57A
+}
+
+.v1024 {
+  background: #EDCF72;
+}
+
+.v2048 {
+  background: #EDCF72;
+}

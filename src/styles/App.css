@@ -1,0 +1,31 @@
+.App {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: 1fr 500px 1fr;
+  grid-template-rows: 1fr 500px 1fr;
+  grid-template-areas:
+  ". title ."
+  ". board ."
+  ". controls-list .";
+  justify-items: stretch;
+  align-items: stretch;
+
+}
+.title-container {
+  grid-area: title;
+  -ms-align-self: end;
+  align-self: end;
+  font-size: 2em;
+  margin: 40px 0;
+}
+.Title {
+  /*font-size: 1em;*/
+  color: #755;
+}
+.subtitle {
+  color: #F55;
+}
+.subtitle.false {
+  display:none
+}

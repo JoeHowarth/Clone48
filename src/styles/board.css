@@ -1,0 +1,29 @@
+.board {
+  grid-area: board;
+  border: 1px #AAA solid;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "a11 a21 a31 a41"
+  "a12 a22 a32 a42"
+  "a13 a23 a33 a43"
+  "a14 a24 a34 a44";
+  grid-gap: 12px;
+  padding: 12px;
+  background: #EEE5E5;
+
+}
+
+.tile {
+  border: 1px #AAA solid;
+  border-radius: 5px;
+  color: #F9F6F2;
+  font-size: 3em;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .1s;
+}
